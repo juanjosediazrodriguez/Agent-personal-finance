@@ -183,7 +183,3 @@ cp .env.example .env
 
 Luego llena los valores del `.env`. Los comandos para instalar y correr cada parte se agregan cuando exista el código.
 
-
-## Uso de IA generativa
-
-La materia permite usar IA generativa con transparencia. Este proyecto se diseña y desarrolla con ayuda de un asistente de IA, y cada decisión queda justificada en este documento.
