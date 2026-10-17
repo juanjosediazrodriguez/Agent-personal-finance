@@ -1,0 +1,39 @@
+# Secretos: llaves del LLM y de Supabase. Nunca se suben.
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+npm-debug.log*
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+
+# Datos y modelos generados (se reproducen con el generador y la semilla)
+ml/data/
+ml/modelos/
+*.joblib
+*.pkl
+
+# Sistema y editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
