@@ -17,15 +17,6 @@ Una app web donde el usuario:
 - obtiene un **plan de ahorro óptimo** que cumple su meta con el menor sacrificio;
 - le pregunta todo eso a un **agente** en lenguaje natural.
 
-### Cómo cumple la regla del curso
-
-El proyecto debe combinar al menos una técnica de cada parte de la materia:
-
-| Parte 1: IA clásica | Parte 2: IA moderna |
-|---|---|
-| **Programación lineal** (el optimizador del presupuesto) | **Agente LLM con herramientas** (*tool use*) |
-| **ML clásico**: TF-IDF + regresión logística (clasificador) y regresión (pronóstico) | **LLM como clasificador**, comparado contra el ML clásico |
-
 ## Alcance
 
 | Dentro (MVP) | Fuera (después) |
@@ -119,9 +110,12 @@ Todas son de solo lectura o de cálculo:
 | Backend | FastAPI + Pydantic |
 | ML y optimización | scikit-learn, scipy |
 | Base de datos y login | Supabase (Auth + Postgres + RLS) |
-| LLM | Por decidir |
+| LLM | Configurable por variables de entorno (cliente de OpenAI). Candidatos: NVIDIA y Groq, plan gratis |
+| Dependencias de Python | `uv` (`pyproject.toml` + `uv.lock`) |
 | Entorno local | Docker Compose |
 | Tests | pytest |
+
+Las reglas para trabajar en el repo (convenciones, ramas, commits y reglas de seguridad) están en [`AGENTS.md`](AGENTS.md). La forma de los datos y de las herramientas del agente está en [`docs/contratos.md`](docs/contratos.md).
 
 ### Seguridad: la pone la base de datos, no el LLM
 
@@ -165,7 +159,9 @@ Agent-personal-finance/
 ├── ml/                    # generador de datos, entrenamiento y evaluación
 ├── supabase/migrations/   # tablas + RLS
 ├── evals/                 # preguntas con respuesta conocida y ataques
+├── docs/                  # contratos de datos y decisiones (ADR)
 ├── docker-compose.yml
+├── AGENTS.md              # reglas para asistentes de IA y para el equipo
 └── README.md
 ```
 
@@ -178,6 +174,14 @@ Cada fase deja algo entregable.
 3. **API y base de datos:** FastAPI, Supabase con RLS y la prueba de seguridad.
 4. **Frontend:** dashboard, movimientos, plan de ahorro y chat.
 5. **Cierre:** este README con los resultados reales, y despliegue si alcanza.
+
+## Cómo empezar
+
+```
+cp .env.example .env
+```
+
+Luego llena los valores del `.env`. Los comandos para instalar y correr cada parte se agregan cuando exista el código.
 
 
 ## Uso de IA generativa
